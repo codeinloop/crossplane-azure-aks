@@ -1,0 +1,28 @@
+apiVersion: network.azure.crossplane.io/v1alpha3
+kind: VirtualNetwork
+metadata:
+  name: ${CIL_VNET_NAME}
+spec:
+  location: ${CIL_LOCATION}
+  properties:
+    addressSpace:
+      addressPrefixes:
+        - 10.3.0.0/16
+  providerConfigRef:
+    name: ${CIL_PROVIDER_CONFIG_NAME}
+  resourceGroupNameRef:
+    name: ${CIL_RESOURCE_GROUP_NAME}
+---
+apiVersion: network.azure.crossplane.io/v1alpha3
+kind: Subnet
+metadata:
+  name: ${CIL_VNET_SUBNET_NAME}
+spec:
+  properties:
+    addressPrefix: 10.3.0.0/24
+  providerConfigRef:
+    name: ${CIL_PROVIDER_CONFIG_NAME}
+  resourceGroupNameRef:
+    name: ${CIL_RESOURCE_GROUP_NAME}
+  virtualNetworkNameRef:
+    name: ${CIL_VNET_NAME}

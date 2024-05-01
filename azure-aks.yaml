@@ -1,0 +1,21 @@
+apiVersion: compute.azure.crossplane.io/v1alpha3
+kind: AKSCluster
+metadata:
+  name: ${CIL_AKS_NAME}
+  name: ${CIL_AKS_NAME}
+spec:
+  dnsNamePrefix: ${CIL_AKS_DNS_PREFIX}
+  location: ${CIL_LOCATION}
+  nodeCount: ${CIL_AKS_NODE}
+  nodeVMSize: ${CIL_AKS_FLAVOR}
+  version: ${CIL_K8S_VERSION}
+  disableRBAC: false
+  providerConfigRef:
+    name: ${CIL_PROVIDER_CONFIG_NAME}
+  resourceGroupNameRef:
+    name: ${CIL_RESOURCE_GROUP_NAME}
+  vnetSubnetIDRef:
+    name: ${CIL_VNET_SUBNET_NAME}
+  writeConnectionSecretToRef:
+    name: ${CIL_AKS_NAME}
+    namespace: ${CIL_CROSSPLANE_NS}

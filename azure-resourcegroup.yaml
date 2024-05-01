@@ -1,0 +1,8 @@
+apiVersion: azure.crossplane.io/v1alpha3
+kind: ResourceGroup
+metadata:
+  name: ${CIL_RESOURCE_GROUP_NAME}
+spec:
+  location: ${CIL_LOCATION}
+  providerConfigRef:
+    name: ${CIL_PROVIDER_CONFIG_NAME}
